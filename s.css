@@ -1,0 +1,30 @@
+/*Descendent Selectors*/
+
+div p {
+    background: green;
+    color: red;
+}
+
+
+/*Child Selectors*/
+
+div>p {
+    background: red;
+    color: yellow;
+}
+
+
+/*General Sibling Selectors*/
+
+div~p {
+    background: purple;
+    color: green;
+}
+
+
+/*Adjacent Selectors*/
+
+div+p {
+    background: orange;
+    color: white;
+}

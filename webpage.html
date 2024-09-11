@@ -1,0 +1,180 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        nav {
+            width: 100%;
+            background-color: #feb236;
+            overflow: hidden;
+            height: 40px;
+        }
+        
+        nav ul {
+            list-style: none;
+            float: left;
+        }
+        
+        nav ul li {
+            display: inline;
+            padding: 4px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+        /* pseduo class*/
+        
+        nav ul li a:hover {
+            text-decoration: none;
+            color: white;
+            background-color: #82b74b;
+        }
+        
+        nav ul li a:visited {
+            text-decoration: none;
+            color: green;
+            background-color: purple;
+        }
+        
+        section h1 {
+            color: #82b74b;
+            font-size: 30px;
+        }
+        
+        .productcontainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .productcontaineritem {
+            border-radius: 4px;
+            background-image: linear-gradient(120deg, white, #feb236);
+            width: 180px;
+            height: 280px;
+            margin: 10px;
+            justify-content: center;
+        }
+        
+        .productcontaineritemheader {
+            border-radius: 4px;
+            background-color: #82b74b;
+            height: 20px;
+            color: white;
+        }
+        
+        @media screen and (max-width: 600px) {
+            body {
+                background-color: white;
+            }
+            .footer-section {
+                flex-basis: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href=#>Home</a></li>
+            <li> <a href='category.html' target="_blank">Category</a></li>
+            <li> <a href=#>About Us</a></li>
+        </ul>
+        <ul style="float: right;">
+            <li><a href=#>Contact Us</a></li>
+            <li> <a href=#>FAQ </a></li>
+        </ul>
+
+    </nav>
+    <section>
+        <img src="vegetables.jpeg" style="width: 100%; height: 350px; margin: 4px; object-fit: cover; object-position: bottom;border-radius: 10px;">
+    </section>
+    <center>
+        <section>
+            <h1>------------- Vegetables------------- </h1>
+        </section>
+    </center>
+
+    <div class="productcontainer">
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="tomato.jpeg" width="120px" height="100px" style="margin: 6px;">
+                <b> <h3>Tomato</h3></b>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="potato.jpg" width="120px" height="100px" style="margin: 6px;">
+                <h3>potato</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="onion.jpeg" width="120px" height="100px" style="margin: 6px;">
+                <h3>onion</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="capsicum.jpeg" width="120px" height="100px" style="margin: 6px;">
+                <h3>Capsicum</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="tomato.jpeg" width="120px" height="100px" style="margin: 6px;">
+                <h3>Tomato</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="onion.jpeg" width="120px" height="100px" style="margin: 6px;">
+                <h3>Onion</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="tomato.jpeg" width="120px" height="100px" style="margin: 6px;">
+                <h3>Tomato</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>

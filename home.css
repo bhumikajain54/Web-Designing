@@ -1,0 +1,52 @@
+.container {
+    background-color: darkblue;
+    color: aqua;
+    margin: 0%;
+    padding: 0%;
+}
+
+.nav {
+    display: inline-block;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    gap: 38px;
+    font-size: 28px;
+    margin: 10px 10px;
+}
+
+.nav li {
+    margin: 10px 0;
+    /* Spacing between items */
+}
+
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 25px;
+    gap: 28px;
+}
+
+.btn a:visited {
+    color: darkgray;
+}
+
+.btn:hover a {
+    background-color: blueviolet;
+}
+
+.btn a:hover {
+    background-color: red;
+}
+
+.btn a:active {
+    color: pink;
+}
+
+.btn a:link {
+    color: yellow;
+}
+
+div:first-child {
+    background-color: darkmagenta;
+}
