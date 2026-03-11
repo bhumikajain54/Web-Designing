@@ -1,0 +1,82 @@
+.container {
+    background-color: darkblue;
+    color: aqua;
+    margin: 0%;
+    padding: 0%;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    gap: 38px;
+    font-size: 28px;
+    margin: 10px 10px;
+    flex-wrap: wrap;
+}
+
+.nav li {
+    margin: 10px 0;
+}
+
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 25px;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.btn a:link {
+    color: yellow;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.btn a:visited {
+    color: darkgray;
+}
+
+.btn:hover a {
+    background-color: blueviolet;
+}
+
+.btn a:hover {
+    background-color: red;
+    color: white;
+}
+
+.btn a:active {
+    color: pink;
+}
+
+div:first-child {
+    background-color: darkmagenta;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .nav { gap: 20px; font-size: 22px; }
+    .btn { gap: 15px; font-size: 20px; }
+}
+
+@media (max-width: 600px) {
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+    }
+    .btn {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        margin-bottom: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+    .container { padding: 10px; }
+}

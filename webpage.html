@@ -1,0 +1,202 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        nav {
+            width: 100%;
+            background-color: #feb236;
+            overflow: hidden;
+            min-height: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        
+        nav ul li {
+            padding: 8px 12px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        
+        nav ul li a:hover {
+            color: #82b74b;
+            background-color: white;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+        
+        section img {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            margin: 0;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .productcontainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .productcontaineritem {
+            border-radius: 8px;
+            background-image: linear-gradient(120deg, white, #feb236);
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .productcontaineritem:hover {
+            transform: translateY(-5px);
+        }
+        
+        .productcontaineritemheader {
+            border-radius: 4px;
+            background-color: #82b74b;
+            padding: 5px;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        @media screen and (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+            nav ul li {
+                padding: 10px;
+            }
+            .productcontainer {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 10px;
+                padding: 10px;
+            }
+            .productcontaineritem {
+                padding: 10px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href=#>Home</a></li>
+            <li> <a href='category.html' target="_blank">Category</a></li>
+            <li> <a href=#>About Us</a></li>
+        </ul>
+        <ul style="float: right;">
+            <li><a href=#>Contact Us</a></li>
+            <li> <a href=#>FAQ </a></li>
+        </ul>
+
+    </nav>
+    <section>
+        <img src="vegetables.jpeg" alt="Vegetables">
+    </section>
+    <center>
+        <section>
+            <h1>------------- Vegetables------------- </h1>
+        </section>
+    </center>
+
+    <div class="productcontainer">
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="tomato.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
+                <b> <h3>Tomato</h3></b>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="potato.jpg" style="max-width: 100%; height: auto; margin: 6px;">
+                <h3>potato</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="onion.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
+                <h3>onion</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="capsicum.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
+                <h3>Capsicum</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="tomato.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
+                <h3>Tomato</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="onion.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
+                <h3>Onion</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+        <div class="productcontaineritem">
+            <center>
+                <div class="productcontaineritemheader"> 11hrs 12min left</div>
+                <img src="tomato.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
+                <h3>Tomato</h3>
+                <h5> Rs. 100</h5>
+                <h6>1 Kg</h6>
+                <div class="productcontaineritemheader"> Add to Cart</div>
+            </center>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>

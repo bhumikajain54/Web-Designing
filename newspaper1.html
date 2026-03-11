@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Times of India - Content Update</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Roboto+Condensed:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+
+        :root {
+            --bg-color: #f9f7f1;
+            --text-color: #121212;
+            --accent-red: #8b0000;
+            --border-color: #000;
+            --inner-border: #ccc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 0 10px;
+            font-family: 'Crimson Pro', serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 0 20px;
+            }
+        }
+
+        header {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            border-bottom: 3px solid var(--border-color);
+            padding: 20px 0 10px 0;
+        }
+
+        h1.nameplate {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 12vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        @media (min-width: 1024px) {
+            h1.nameplate {
+                letter-spacing: -2px;
+            }
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 20px;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: clamp(11px, 2vw, 14px);
+            padding: 10px 0;
+            border-top: 1px solid var(--border-color);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .meta-info {
+                justify-content: space-between;
+            }
+        }
+
+        .main-grid {
+            max-width: 1400px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .sidebar {
+                grid-column: span 2;
+                display: flex;
+                gap: 20px;
+            }
+
+            .sidebar>div {
+                flex: 1;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .main-grid {
+                grid-template-columns: 300px 1fr 350px;
+            }
+
+            .sidebar {
+                grid-column: span 1;
+                display: block;
+            }
+        }
+
+        h2.headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 5vw, 32px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        h2.red {
+            color: var(--accent-red);
+        }
+
+        p {
+            font-size: clamp(15px, 2vw, 18px);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .karan-gupta-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--inner-border);
+        }
+
+        @media (min-width: 480px) {
+            .karan-gupta-section {
+                flex-direction: row;
+            }
+        }
+
+        .kg-img {
+            width: 100px;
+            height: 120px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            align-self: center;
+        }
+
+        @media (min-width: 480px) {
+            .kg-img {
+                align-self: flex-start;
+            }
+        }
+
+        .kg-quote {
+            font-style: italic;
+            font-size: clamp(14px, 1.8vw, 16px);
+        }
+
+        img.article-img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .bullet-list {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 10px;
+            font-size: clamp(14px, 1.8vw, 16px);
+        }
+
+        /* Component Classes */
+        .sidebar-section {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display';
+            font-size: 20px;
+            border-bottom: 2px solid var(--accent-red);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .roadmap-list {
+            list-style: none;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .roadmap-item {
+            margin-bottom: 12px;
+            border-left: 3px solid var(--accent-red);
+            padding-left: 10px;
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 15px;
+            text-align: center;
+        }
+
+        .number-item {
+            padding: 0 5px;
+            border-right: 1px solid #ddd;
+        }
+
+        .number-item:last-child {
+            border-right: none;
+        }
+
+        .number-val {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Playfair Display';
+        }
+
+        .number-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .ticker {
+            margin-top: 25px;
+            background: var(--border-color);
+            color: #fff;
+            padding: 12px;
+            font-family: 'Roboto Condensed';
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .market-watch {
+            border: 1px double var(--border-color);
+            padding: 15px;
+            background: #fff;
+            margin-top: 30px;
+        }
+
+        .market-title {
+            font-family: 'Roboto Condensed';
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--accent-red);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 10px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+            font-family: 'Roboto Condensed';
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="nameplate">The Times of India</h1>
+    </header>
+    <div class="meta-info">
+        <span>THURSDAY, JANUARY 21, 2021</span>
+        <span>MUMBAI EDITION</span>
+        <span>PRICE: ₹7.00</span>
+    </div>
+
+    <div class="main-grid">
+        <!-- LEFT COLUMN -->
+        <div class="sidebar">
+            <h2 class="headline red">For int'l students, SAT subject tests to go by summer</h2>
+            <p>
+                The 'optional AP' is also the name of college-level courses taught in high schools, and the AP diploma
+                is accepted globally at top universities. In countries like India, where national boards do not offer
+                APs as an addition to the high school curricula, independent centres will allow candidates to take the
+                AP programme and the test to prove their academic prowess in top universities.
+            </p>
+
+            <!-- New Related Section: Expert Insight Q&A -->
+            <div class="sidebar-section">
+                <h3 class="section-title">Expert Insight</h3>
+                <div style="margin-bottom: 12px;">
+                    <p style="font-size: 14px; line-height: 1.4; margin-bottom: 5px; font-weight: bold;">Q: Will Indian
+                        colleges accept the new format?</p>
+                    <p style="font-size: 14px; line-height: 1.4; color: #444; font-style: italic;">A: Most of the 40+
+                        Indian universities mentioned are already aligned with the College Board's latest guidelines for
+                        2021 admissions.</p>
+                </div>
+                <div>
+                    <p style="font-size: 14px; line-height: 1.4; margin-bottom: 5px; font-weight: bold;">Q: Is the essay
+                        completely gone?</p>
+                    <p style="font-size: 14px; line-height: 1.4; color: #444; font-style: italic;">A: While optional
+                        globally, it is only available in states where it's required as part of SAT school day
+                        administrations.</p>
+                </div>
+            </div>
+
+            <!-- New Related Section: Digital SAT Roadmap -->
+            <div class="sidebar-section">
+                <h3 class="section-title">The Digital Roadmap</h3>
+                <ul class="roadmap-list">
+                    <li class="roadmap-item">
+                        <strong>Late 2021:</strong> Pilot testing begins for the digital adaptive version in select
+                        international locations.
+                    </li>
+                    <li class="roadmap-item">
+                        <strong>Spring 2022:</strong> Full international rollout of the digital SAT format.
+                    </li>
+                    <li class="roadmap-item">
+                        <strong>Year 2023:</strong> Complete transition for all US domestic students.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="center-col">
+            <div class="karan-gupta-section">
+                <img src="img/images.jpeg" class="kg-img" alt="Karan Gupta">
+                <div>
+                    <h3 style="font-family: 'Roboto Condensed';">Karan Gupta</h3>
+                    <p class="kg-quote">"While the Board said it will no longer offer subject tests to US students
+                        effective immediately, it will phase them out for international students by summer students.
+                        We're adapting to respond to the changing needs of students and colleges. This change simply
+                        streamlines the process."</p>
+                </div>
+            </div>
+
+            <h2 class="headline">SAT discards subject tests & essay to 'reduce burden', 50 mins shorter now</h2>
+            <p>
+                <b>Mumbai:</b> The College Board, the New York-based organization that runs the Scholastic Aptitude
+                Test, has scrapped its subject tests and announced its decision to do away with the optional essay, thus
+                making the main SAT 50 minutes shorter in duration, reports Hemali Chhapia.
+            </p>
+            <p>
+                Candidates are admitted based on SAT scores for undergraduate admissions in the US and to 40
+                universities in India, private and deemed. The subject tests were 20 multiple-choice standardized. In
+                case of the essay too, top universities have found that essay scores are not useful or essential for
+                admission.
+            </p>
+
+            <!-- Filling the gap with extra content as requested -->
+            <div style="border-top: 1px dashed #000; padding-top: 15px; margin-top: 15px;">
+                <h3 style="font-family: 'Playfair Display'; font-size: 24px; margin-bottom: 10px;">Why the Shift Matters
+                    for Indian Applicants</h3>
+                <p>
+                    For years, Indian students have relied on SAT subject tests to showcase their prowess in STEM
+                    subjects.
+                    The removal of these tests means that students must now focus more on their school grades (GPA) and
+                    other standardized metrics like the AP (Advanced Placement) exams.
+                </p>
+                <p>
+                    Counselors suggest that this move "levels the playing field" but also puts more pressure on school
+                    transcripts. "Colleges are looking at the student as a whole, not just a score on a Saturday
+                    morning,"
+                    says a leading educationist in Mumbai.
+                </p>
+                <div
+                    style="background: #eee; padding: 15px; border-left: 4px solid var(--accent-red); font-style: italic;">
+                    "The pandemic has Accelerated a trend that was already in motion. Digital SATs and holistic reviews
+                    are the future of global education."
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <h2 class="headline" style="font-size: 26px;">Education Reforms: The Road Ahead</h2>
+                    <p style="font-size: 16px;">
+                        With the landscape of standardized testing changing, experts are now pointing towards a more
+                        skill-based evaluation system. The focus is shifting from memorization to critical thinking
+                        and problem-solving.
+                    </p>
+                    <p style="font-size: 16px;">
+                        "We want students who can apply knowledge, not just repeat it," said a spokesperson for the
+                        Education Ministry. This shift is expected to influence how schools in India structure their
+                        final year portfolios.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-col">
+
+            <img src="img/sensors-22-03136-g001.png" class="article-img" alt="Graph">
+
+            <h3 style="font-family: 'Roboto Condensed'; margin-bottom: 10px;">APS GAIN GROUND</h3>
+            <ul class="bullet-list">
+                <li>SAT scores for UG admissions in the US, 40 varsities in India Subject tests 20 MC questions for
+                    individual subjects.</li>
+                <li>But Advanced Placement Testing Programme overlapped in its aim with subject tests questions for
+                    individual subjects, taken to improve credentials.</li>
+                <li>In April 2014 when the deal was registered the market value of the land was Rs 4.14 crore but Rashmi
+                    Thackeray and Manisha Waikar purchased it for only Rs 2.1 crore.</li>
+            </ul>
+
+            <img src="img/Mika.png" class="article-img" alt="Mika">
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 THE TIMES OF INDIA. ALL RIGHTS RESERVED.
+    </footer>
+</body>
+
+</html>
