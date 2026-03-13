@@ -4,53 +4,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2 - Responsive</title>
+    <title>P2 | Student Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        table {
-            width: 100% !important;
-            max-width: 500px;
-            border-collapse: collapse;
+        :root {
+            --primary: #6366f1;
+            --secondary: #ec4899;
+            --bg-gradient: linear-gradient(135deg, #fef2f2 0%, #fefce8 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1e293b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --radius: 20px;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .iframe-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 4px solid white;
+        }
+
         iframe {
-            max-width: 100%;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            color: white;
+            background: var(--primary);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background: #4f46e5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--primary);
+            padding: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 18px;
+            background: white;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        .percentage-pill {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .top-performer {
+            color: var(--secondary);
+            font-weight: 800;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 800;
         }
     </style>
-
 </head>
 
-<body bgcolor="#FFE4E1">
-    <iframe src="https://en.wikipedia.org/wiki/MS_Dhoni" height="400" width="100%">MS Dhoni</iframe><br><br>
-    <a href="newspaper1.html" target="_blank">Home</a><br>
-    <a href="newspaper1.html" target="_self">Home</a><br>
-    <a href="newspaper1.html" target="_parent">Home</a><br>
-    <center>
-        <table border="5" bgcolor="#FFFFFF" cellpadding="10" cellspacing="10">
-            <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>PERCENTAGE</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Bhumika</td>
-                <td>99%</td>
-            </tr>
-            <tr>
-                <td colspan="2">2 Mahima</td>
-                <td>99%</td>
-            </tr>
-            <tr>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Player Spotlight</h2>
+            <div class="iframe-container">
+                <iframe src="https://en.wikipedia.org/wiki/MS_Dhoni"></iframe>
+            </div>
+            
+            <div class="nav-links">
+                <a href="newspaper1.html" class="nav-button" target="_blank">View News</a>
+                <a href="p1.html" class="nav-button">Back to Practice</a>
+            </div>
+        </div>
 
-                <td rowspan="2">3</td>
-                <td>Mika</td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td>Sajal</td>
-                <td>50.10%</td>
-            </tr>
-        </table>
-    </center>
+        <div class="card">
+            <h2>Performance Metrics</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 80px; text-align: center;">ID</th>
+                        <th>Student Name</th>
+                        <th style="width: 150px;">Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">01</td>
+                        <td>Bhumika</td>
+                        <td><span class="percentage-pill">99%</span></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">02</td>
+                        <td>Mahima</td>
+                        <td><span class="percentage-pill">99%</span></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">03</td>
+                        <td>Mika</td>
+                        <td><span class="percentage-pill top-performer">100%</span></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">04</td>
+                        <td>Sajal</td>
+                        <td><span class="percentage-pill" style="background: rgba(0,0,0,0.05); color: #64748b;">50.10%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 
-</html>
+</html>

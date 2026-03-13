@@ -1,61 +1,167 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lists</title>
+    <title>Premium Inventory | Asset Lists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { padding: 20px; font-family: sans-serif; max-width: 800px; margin: auto; }
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --radius: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #ec4899;
+            display: inline-block;
+        }
+
+        /* Pill Grid Style */
+        .pill-grid {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill-grid li {
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .pill-grid li:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Step List Style */
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+            padding-left: 10px;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            counter-increment: step-counter;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -11px;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+
+        .step-list li:hover { color: var(--primary); }
+        .step-list li:hover::before { background: var(--primary); color: white; transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
+
 <body>
-    <ul type="circle">
-        <li>Apple</li>
-        <li>Banana</li>
-        <li>Cherry</li>
-        <li>Date</li>
-        <li>Elderberry</li>
-        <li>Fig</li>
-        <li>Grape</li>
-        <li>Honeydew</li>
-        <li>Kiwi</li>
-        <li>Lemon</li>
-        <li>Mango</li>
-        <li>Nectarine</li>
-        <li>Orange</li>
-        <li>Peach</li>
-        <li>Quince</li>
-        <li>Raspberry</li>
-        <li>Strawberry</li>
-        <li>Tangerine</li>
-        <li>Umbrella</li>
-        <li>Vinegar</li>
-        <li>Watermelon</li>
-        <li>Xanth</li>
-    </ul>
-    <ol type="1">
-        <li>Apple</li>
-        <li>Banana</li>
-        <li>Cherry</li>
-        <li>Date</li>
-        <li>Elderberry</li>
-        <li>Fig</li>
-        <li>Grape</li>
-        <li>Honeydew</li>
-        <li>Kiwi</li>
-        <li>Lemon</li>
-        <li>Mango</li>
-        <li>Nectarine</li>
-        <li>Orange</li>
-        <li>Peach</li>
-        <li>Quince</li>
-        <li>Raspberry</li>
-        <li>Strawberry</li>
-        <li>Tangerine</li>
-        <li>Umbrella</li>
-        <li>Vinegar</li>
-        <li>Watermelon</li>
-        <li>Xanth</li>
-    </ol>
+    <div class="container">
+        <!-- Asset Inventory -->
+        <div class="card">
+            <h2>Inventory</h2>
+            <ul class="pill-grid">
+                <li>Apple</li><li>Banana</li><li>Cherry</li><li>Date</li><li>Elderberry</li>
+                <li>Fig</li><li>Grape</li><li>Honeydew</li><li>Kiwi</li><li>Lemon</li>
+                <li>Mango</li><li>Nectarine</li><li>Orange</li><li>Peach</li><li>Quince</li>
+                <li>Raspberry</li><li>Strawberry</li><li>Tangerine</li><li>Umbrella</li>
+                <li>Vinegar</li><li>Watermelon</li><li>Xanth</li>
+            </ul>
+        </div>
+
+        <!-- Priority Order -->
+        <div class="card">
+            <h2>Workflow</h2>
+            <ol class="step-list">
+                <li>Acquisition</li><li>Sorting</li><li>Quality Checks</li><li>Deep Cleaning</li>
+                <li>Packaging</li><li>Labeling</li><li>Storage</li><li>Inventory Log</li>
+                <li>Order Picking</li><li>Shipping</li><li>Tracking</li><li>Delivery</li>
+                <li>Feedback</li><li>Restocking</li><li>Maintenance</li><li>Scaling</li>
+            </ol>
+        </div>
+    </div>
 </body>
 
-</html>
+</html>

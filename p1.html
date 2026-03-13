@@ -4,189 +4,634 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="c1.css" rel="stylesheet">
+    <title>Premium Practice Page | Day 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --secondary: #ec4899;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            gap: 40px;
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--primary);
+            margin-bottom: 0.5em;
+            font-weight: 800;
+        }
+
         h1 {
-            color: blue;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
         }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .tag-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        marquee {
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        img,
+        iframe {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: none;
+        }
+
+        .image-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .image-box img {
+            transition: transform 0.5s ease;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.05);
+        }
+
+        .links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 8px 20px;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         table {
-            width: 100% !important;
-            max-width: 600px;
+            width: 100%;
             border-collapse: collapse;
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 8px;
         }
-        img, iframe {
-            max-width: 100%;
-            height: auto;
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        tr:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .lists-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        ul,
+        ol {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        li:hover {
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .btn-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .lists-section {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Advanced List Enhancements */
+        .pill-grid {
+            list-style: none !important;
+            padding: 0 !important;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .pill-grid li {
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+            margin: 0 !important;
+        }
+
+        .pill-grid li:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+        }
+
+        .step-list {
+            list-style: none !important;
+            padding: 0 !important;
+            border-left: 2px solid #e2e8f0;
+            margin-left: 10px !important;
+            margin-top: 15px;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px !important;
+            counter-increment: step-counter;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -11px;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+
+        .step-list li:hover {
+            color: var(--primary);
+        }
+
+        .step-list li:hover::before {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .definition-panel {
+            margin-top: 40px;
+            background: linear-gradient(to right, rgba(99, 102, 241, 0.05), transparent);
+            padding: 25px;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .definition-panel dt {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .definition-panel dd {
+            color: var(--text-muted);
+            font-size: 1.1rem;
         }
     </style>
-    <title>Practice day1</title>
 </head>
 
-<body bgcolor="MistyRose">
-    <h1>This is H1 tag</h1>
-    <h2>This is H2 tag</h2>
-    <h3>This is H3 tag</h3>
-    <h4>This is H4 tag</h4>
-    <h5>This is H5 tag</h5>
-    <h6>This is H6 tag</h6>
-    <font color="DarkBlue" size="5px">
-        <p>This is paragraph</p>
-    </font>
-    <p>
-        Balaghat is a district in the state of Madhya Pradesh, India. It's known for its rich cultural heritage and natural beauty.The district is famous for its forests, which are part of the Kanha National Park, a major tiger reserve.Balaghat is also known
-        for its manganese ore deposits.
-    </p>
-    <hr />
-    <center>This is center tag</center>
-    <b>This is a bold tag</b><br />
-    <i>This is a italic tag</i><br />
-    <u>This is a underline tag</u><br /> 3 <sub>nd</sub><br /> 10 <sup>th</sup><br />
-    <q>Balaghat is a district in the state of Madhya Pradesh, India.</q><br />
-    <strike>Would you like more detailed information about a specific aspect of
-      Balaghat?</strike
-    ><br />
-    <marquee behavior="10" direction="right">
-      <font size="5px" color="purple">BHUMIKA</font> </marquee
-    ><br /><br />
-    <hr />
-    <img
-      src="https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2023/10/02/cd556535-2bf9-4586-8327-2589cc071f49_1696183192764.jpg"
-      alt="sorry!"
-    /><br /><br />
-    <img
-      src="Balaghat-Jobs.png"
-      alt="sorry!"
-      width="300px"
-      height="300px"
-      border="10"
-    /><br />
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb1zn_-kDM38MI-V00wLuUDNz6extDanIQFA&s"
-      height="300px"
-      width="500px"
-    />
-    <iframe
-      src="https://en.wikipedia.org/wiki/MS_Dhoni"
-      height="500px"
-      width="500px"
-      >MS Dhoni</iframe
-    ><br /><br />
-    <a href="newspaper1.html" target="_blank">Home</a><br />
-    <a href="newspaper1.html" target="_self">Home</a><br />
-    <a href="newspaper1.html" target="_parent">Home</a><br />
-    <hr />
-    <center>
-      <table border="5" bgcolor="#FFFFFF" cellpadding="10" cellspacing="10" style="width: 100%; max-width: 500px;">
-        <tr>
-          <th>ID</th>
-          <th>NAME</th>
-          <th>PERCENTAGE</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Bhumika</td>
-          <td>99%</td>
-        </tr>
-        <tr>
-          <td colspan="2">2 Mahima</td>
-          <td>99%</td>
-        </tr>
-        <tr>
-          <td rowspan="2">3</td>
-          <td>Mika</td>
-          <td>100%</td>
-        </tr>
-        <tr>
-          <td>Sajal</td>
-          <td>50.10%</td>
-        </tr>
-      </table>
-    </center>
-    <br />
-    <hr />
-    <ul type="circle">
-      <li>Apple</li>
-      <li>Banana</li>
-      <li>Cherry</li>
-      <li>Date</li>
-      <li>Elderberry</li>
-      <li>Fig</li>
-      <li>Grape</li>
-      <li>Honeydew</li>
-      <li>Kiwi</li>
-      <li>Lemon</li>
-      <li>Mango</li>
-      <li>Nectarine</li>
-      <li>Orange</li>
-      <li>Peach</li>
-      <li>Quince</li>
-      <li>Raspberry</li>
-      <li>Strawberry</li>
-      <li>Tangerine</li>
-      <li>Umbrella</li>
-      <li>Vinegar</li>
-      <li>Watermelon</li>
-      <li>Xanth</li>
-    </ul>
-    <hr />
-    <ol type="1">
-      <li>Apple</li>
-      <li>Banana</li>
-      <li>Cherry</li>
-      <li>Date</li>
-      <li>Elderberry</li>
-      <li>Fig</li>
-      <li>Grape</li>
-      <li>Honeydew</li>
-      <li>Kiwi</li>
-      <li>Lemon</li>
-      <li>Mango</li>
-      <li>Nectarine</li>
-      <li>Orange</li>
-      <li>Peach</li>
-      <li>Quince</li>
-      <li>Raspberry</li>
-      <li>Strawberry</li>
-      <li>Tangerine</li>
-      <li>Umbrella</li>
-      <li>Vinegar</li>
-      <li>Watermelon</li>
-      <li>Xanth</li>
-    </ol>
-    <hr />
-    <dl>
-      <dt>HTML</dt>
-      <dd>Hypertext Markup Language</dd>
-    </dl>
-    <br /><br />
-    <form method="post" action="p1.html">
-      Name: <input type="text" name="Fname" required="required" /><br /><br />
-      Email: <input type="email" name="email" /><br /><br />
-      Phone: <input type="tel" name="phone" /><br /><br />
-      Address : <textarea name="address" rows="5" ,cols="50"></textarea><br /><br />
-      Password: <input type="password" name="password" /><br /><br />
-      Gender: <input type="radio" name="gender" value="male" />Male
-      <input type="radio" name="gender" value="female" />Female<br /><br />
-      Hobbies: <input type="checkbox" name="hobbies" value="cricket" />Cricket
-      <input type="checkbox" name="hobbies" value="cooking" />Cooking
-      <input type="checkbox" name="hobbies" value="singing" />Singing
-      <input type="checkbox" name="hobbies" value="Badminton" />Badminton <br><br>
-      City: <select name="city">
-        <option value="mumbai">Mumbai</option>
-        <option value="delhi">Delhi</option>
-        <option value="chennai">Chennai</option>
-        <option value="kolkata">Kolkata</option>
-        <option value="bangalore">Bangalore</option>
-        <option value="hyderabad">Hyderabad</option>
-        <option value="pune">Pune</option>
-        <option value="ahmedabad">Ahmedabad</option>
-        <option value="jaipur">Jaipur</option>
-        <option value="chandigarh">Chandigarh</option>
-        <option value="cochin">Cochin</option>
-        <option value="kochi">Kochi</option>
-        <option value="thiruvananthapuram">Thiruvananth</option></select><br /><br />
-      Submit: <input type="reset" value="Submit" />
-    </form>
-  </body>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="card">
+            <h1>Balaghat Exploration</h1>
+            <p style="text-align: center; color: var(--text-muted);">A modern take on Day 1 practice exercises</p>
+        </header>
+
+        <!-- Basic Tags Section -->
+        <section class="card">
+            <h2>Text Hierarchies & Tags</h2>
+            <div class="tag-demo">
+                <h1>Heading 1 – The Main Title</h1>
+                <h2>Heading 2 – Section Title</h2>
+                <h3>Heading 3 – Subsection</h3>
+                <h4>Heading 4 – Minor Title</h4>
+                <h5>Heading 5 – Detail Label</h5>
+                <h6>Heading 6 – Smallest Label</h6>
+            </div>
+
+            <p class="highlight">Balaghat Highlights:</p>
+            <p>
+                Balaghat is a district in the state of Madhya Pradesh, India. It's known for its rich cultural heritage
+                and natural beauty.
+                The district is famous for its forests, which are part of the <strong>Kanha National Park</strong>, a
+                major tiger reserve.
+                Balaghat is also known for its manganese ore deposits.
+            </p>
+
+            <hr>
+            <p style="text-align: center; color: var(--primary); font-weight: 600;">Modernized formatting styles:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 15px;">
+                <span><b>Bold Text</b></span>
+                <span><i>Italic Style</i></span>
+                <span><u>Underlined</u></span>
+                <span>3<sup>rd</sup> Position</span>
+                <span>10<sub>th</sub> Floor</span>
+                <q>Balaghat is a district in Madhya Pradesh.</q>
+                <del>Outdated Information</del>
+            </div>
+
+            <marquee scrollamount="12" direction="right">WELCOME TO BHUMIKA'S CREATIVE SPACE</marquee>
+        </section>
+
+        <!-- Media Section -->
+        <section class="card">
+            <h2>Visual Media</h2>
+            <div class="media-grid">
+                <div class="image-box">
+                    <img src="https://images.bhaskarassets.com/webp/thumb/512x0/web2images/521/2023/10/02/cd556535-2bf9-4586-8327-2589cc071f49_1696183192764.jpg"
+                        alt="Nature of Balaghat" />
+                </div>
+                <div class="image-box">
+                    <img src="img/Balaghat-Jobs.png" alt="Balaghat Jobs infographic" />
+                </div>
+                <div class="image-box">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb1zn_-kDM38MI-V00wLuUDNz6extDanIQFA&s"
+                        alt="Regional View" />
+                </div>
+                <iframe src="https://en.wikipedia.org/wiki/MS_Dhoni" height="400">MS Dhoni</iframe>
+            </div>
+
+            <div class="links" style="margin-top: 30px;">
+                <a href="newspaper1.html" target="_blank">View Newspaper</a>
+                <a href="home.html">Home Dashboard</a>
+            </div>
+        </section>
+
+        <!-- Data Section -->
+        <section class="card">
+            <h2>Student Progress</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 80px; text-align: center;">ID</th>
+                        <th>NAME</th>
+                        <th style="width: 150px;">PERCENTAGE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;">01</td>
+                        <td>Bhumika</td>
+                        <td><span class="percentage-pill"
+                                style="background: rgba(99, 102, 241, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-weight: 700;">99%</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">02</td>
+                        <td>Mahima</td>
+                        <td><span class="percentage-pill"
+                                style="background: rgba(99, 102, 241, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-weight: 700;">99%</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">03</td>
+                        <td>Mika</td>
+                        <td><span class="top-performer" style="color: var(--secondary); font-weight: 800;">100%</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">04</td>
+                        <td>Sajal</td>
+                        <td style="color: var(--text-muted);">50.10%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Lists Section -->
+        <section class="card">
+            <h2>Technical Glossary & Assets</h2>
+            <div class="lists-section">
+                <div>
+                    <h3 style="font-size: 1.2rem;">Asset Inventory</h3>
+                    <ul class="pill-grid">
+                        <li>Apple</li>
+                        <li>Banana</li>
+                        <li>Cherry</li>
+                        <li>Date</li>
+                        <li>Elderberry</li>
+                        <li>Fig</li>
+                        <li>Grape</li>
+                        <li>Honeydew</li>
+                        <li>Kiwi</li>
+                        <li>Lemon</li>
+                        <li>Mango</li>
+                        <li>Nectarine</li>
+                        <li>Orange</li>
+                        <li>Peach</li>
+                        <li>Quince</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.2rem;">Priority Order</h3>
+                    <ol class="step-list">
+                        <li>Strategic Planning & Analysis</li>
+                        <li>UI/UX Design Architecture</li>
+                        <li>Frontend Infrastructure Build</li>
+                        <li>Rigorous Quality Assurance</li>
+                        <li>Deployment & Production Scaling</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="definition-panel">
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>Hypertext Markup Language – The essential semantic structure of the modern web.</dd>
+                </dl>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="card">
+            <h2>Join Our Community</h2>
+            <form method="post" action="p1.html">
+                <div class="form-group">
+                    <label for="Fname">Full Name</label>
+                    <input type="text" id="Fname" name="Fname" placeholder="Bhumika Jain" required />
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="hello@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 1234567890" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Mailing Address</label>
+                    <textarea id="address" name="address" rows="3" placeholder="Enter your full address..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Security Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" />
+                </div>
+
+                <div class="form-group">
+                    <label>Gender Selection</label>
+                    <div class="radio-group">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 400;">
+                            <input type="radio" name="gender" value="male" /> Male
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 400;">
+                            <input type="radio" name="gender" value="female" /> Female
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Areas of Interest</label>
+                    <div class="checkbox-group">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 400;"><input
+                                type="checkbox" name="hobbies" value="cricket" /> Cricket</label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 400;"><input
+                                type="checkbox" name="hobbies" value="cooking" /> Cooking</label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 400;"><input
+                                type="checkbox" name="hobbies" value="singing" /> Singing</label>
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 400;"><input
+                                type="checkbox" name="hobbies" value="Badminton" /> Badminton</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Preferred City</label>
+                    <select id="city" name="city">
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="chennai">Chennai</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="pune">Pune</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="jaipur">Jaipur</option>
+                        <option value="chandigarh">Chandigarh</option>
+                        <option value="cochin">Cochin</option>
+                    </select>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                    <button type="reset" class="btn btn-secondary">Clear All</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+
 </html>

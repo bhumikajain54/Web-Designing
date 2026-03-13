@@ -1,62 +1,185 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flex Layout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Flex | Service Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #db2777;
+            --primary-light: #f472b6;
+            --bg: #fdf2f8;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 80px 5%;
+        }
+
+        header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        @keyframes entrance {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
         .container {
             display: flex;
-            flex-direction: row;
             flex-wrap: wrap;
-            background-color: red;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: entrance 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
-        
+
         .item {
-            background-color: green;
-            flex: 1 1 150px; /* Grow, shrink, and base width */
-            height: 100px;
-            margin: 5px;
+            background-color: var(--card-bg);
+            flex: 1 1 300px;
+            min-height: 200px;
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.02);
+            cursor: pointer;
+        }
+
+        .item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(219, 39, 119, 0.1);
+            border-color: var(--primary-light);
+        }
+
+        .item h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .item p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .item .icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg);
+            border-radius: 12px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 20px;
-        }
-        .special {
-            flex: 2 1 300px;
-            background-color: blue !important;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
         }
 
+        .item:hover .icon {
+            background: var(--primary);
+            color: white;
+        }
+
+        .special {
+            flex: 2 1 600px;
+            background: linear-gradient(135deg, #db2777 0%, #9d174d 100%);
+            color: white;
+        }
+
+        .special h2, .special p, .special .icon {
+            color: white !important;
+        }
+
+        .special .icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .item { flex: 1 1 100%; }
+        }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>Our Services</h1>
+        <p>Expertly crafted solutions designed to scale with your business goals. Powered by modern flexbox architecture.</p>
+    </header>
+
     <div class="container">
-        <div class="item">1</div>
-        <div class="item special">2</div>
-        <div class="item">3</div>
-        <div class="item">4</div>
-        <div class="item">5</div>
-        <div class="item">6</div>
-        <div class="item">7</div>
-        <div class="item">8</div>
-        <div class="item">9</div>
-        <div class="item">10</div>
-        <div class="item">11</div>
-        <div class="item">12</div>
-        <div class="item">13</div>
-        <div class="item">14</div>
-        <div class="item">15</div>
-        <div class="item">16</div>
-        <div class="item">17</div>
-        <div class="item">18</div>
-        <div class="item">19</div>
-        <div class="item">20</div>
-        <div class="item">21</div>
-        <div class="item">22</div>
-        <div class="item">23</div>
-        <div class="item">24</div>
+        <div class="item">
+            <div class="icon">✦</div>
+            <h2>Brand Strategy</h2>
+            <p>We define the core values and visual identity that make your brand stand out in a crowded market.</p>
+        </div>
+        <div class="item special">
+            <div class="icon">⚡</div>
+            <h2>Cloud Infrastructure</h2>
+            <p>Our high-performance cloud solutions ensure your applications run with 99.9% uptime and lightning-fast speed. Scale effortlessly as your user base grows.</p>
+        </div>
+        <div class="item">
+            <div class="icon">◈</div>
+            <h2>UI/UX Design</h2>
+            <p>Creating intuitive interfaces that users love to engage with. We focus on accessibility and delight.</p>
+        </div>
+        <div class="item">
+            <div class="icon">◉</div>
+            <h2>SEO Optimization</h2>
+            <p>Increase your visibility and drive organic traffic with our data-driven search engine strategies.</p>
+        </div>
+        <div class="item">
+            <div class="icon">⬢</div>
+            <h2>Mobile Growth</h2>
+            <p>Expanding your reach across iOS and Android with high-conversion mobile marketing campaigns.</p>
+        </div>
+        <div class="item">
+            <div class="icon">❖</div>
+            <h2>Cyber Security</h2>
+            <p>Protecting your digital assets with state-of-the-art encryption and continuous monitoring.</p>
+        </div>
     </div>
 </body>
 
-</html>
+</html>

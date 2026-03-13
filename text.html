@@ -1,34 +1,109 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+    <title>Modern Typography | Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
     <style>
-        h1 {
-            color: darkmagenta;
-            line-height: normal;
-            letter-spacing: 2px;
-            text-align: center;
-            text-transform: capitalize;
-            border-bottom: 5px green dashed;
-            border-top: 10px red solid;
-            font-size: clamp(2rem, 5vw, 4rem);
+        :root {
+            --text-dark: #121212;
+            --text-muted: #4a4a4a;
+            --accent: #6366f1;
+            --bg: #ffffff;
         }
-        
-        p {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: bold;
-            padding: 20px;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+            padding: 100px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .editorial-container {
+            max-width: 800px;
             text-align: center;
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        .category {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background-color: var(--text-dark);
+            margin: 0 auto 40px;
+        }
+
+        p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .first-letter {
+            font-family: 'Playfair Display', serif;
+            float: left;
+            font-size: 4rem;
+            line-height: 1;
+            padding: 10px 10px 0 0;
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 60px 20px; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to my website!</h1>
-    <p>This is a simple website created using HTML, CSS, and JavaScript.</p>
+    <div class="editorial-container">
+        <span class="category">Digital Experience</span>
+        <h1>Welcome to the Future of Web Design</h1>
+        <div class="divider"></div>
+        <p>
+            <span class="first-letter">T</span>his space is a celebration of modern typography, where clarity meets elegance. By balancing whitespace, rhythmic line-heights, and thoughtful font pairings, we create reading experiences that are not just legible, but truly beautiful.
+        </p>
+    </div>
 </body>
 
-</html>
+</html>

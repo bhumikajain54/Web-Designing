@@ -1,202 +1,369 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenHarvest | Organic Vegetables</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --brand-green: #2d5a27;
+            --brand-light: #f4f9f4;
+            --brand-accent: #ffb236;
+            --brand-red: #d9534f;
+            --text-dark: #1a2e1a;
+            --text-muted: #5c6b5c;
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--brand-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
         nav {
-            width: 100%;
-            background-color: #feb236;
-            overflow: hidden;
-            min-height: 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 15px 5%;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-soft);
         }
-        
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--brand-green);
+        }
+
         nav ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
             display: flex;
+            gap: 30px;
         }
-        
-        nav ul li {
-            padding: 8px 12px;
-        }
-        
+
         nav ul li a {
             text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-        
-        nav ul li a:hover {
-            color: #82b74b;
-            background-color: white;
-            border-radius: 4px;
-            padding: 4px 8px;
-        }
-        
-        section img {
-            width: 100%;
-            height: auto;
-            max-height: 350px;
-            margin: 0;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        
-        .productcontainer {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        
-        .productcontaineritem {
-            border-radius: 8px;
-            background-image: linear-gradient(120deg, white, #feb236);
-            padding: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
-        .productcontaineritem:hover {
-            transform: translateY(-5px);
+        nav ul li a:hover {
+            color: var(--brand-green);
         }
-        
-        .productcontaineritemheader {
-            border-radius: 4px;
-            background-color: #82b74b;
-            padding: 5px;
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .cart-btn {
+            background: var(--brand-green);
             color: white;
-            font-size: 14px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 450px;
+            margin: 20px 5%;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--brand-green);
             margin-bottom: 10px;
         }
-        
-        @media screen and (max-width: 600px) {
-            nav {
-                flex-direction: column;
-                padding: 10px 0;
-            }
-            nav ul {
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-            }
-            nav ul li {
-                padding: 10px;
-            }
-            .productcontainer {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 10px;
-                padding: 10px;
-            }
-            .productcontaineritem {
-                padding: 10px;
-            }
+
+        /* Product Section */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
         }
 
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--brand-accent);
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+            padding: 0 5% 80px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.03);
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .batch {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--brand-accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 10;
+        }
+
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+            margin-bottom: 15px;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .price-tag {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--brand-green);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .add-btn {
+            width: 100%;
+            background: #f1f5f1;
+            color: var(--brand-green);
+            border: none;
+            padding: 12px;
+            border-radius: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background: var(--brand-green);
+            color: white;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .nav-container { animation: fadeInUp 0.8s ease-out both; }
+        .hero { animation: fadeInUp 1s ease-out 0.2s both; }
+        .product-grid { animation: fadeInUp 1.2s ease-out 0.4s both; }
+        .about { animation: fadeInUp 1.2s ease-out 0.6s both; }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero { height: 350px; }
+            .hero-content { left: 20px; bottom: 20px; right: 20px; max-width: none; }
+            .hero-content h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 
 <body>
     <nav>
+        <div class="logo">GreenHarvest</div>
         <ul>
-            <li><a href=#>Home</a></li>
-            <li> <a href='category.html' target="_blank">Category</a></li>
-            <li> <a href=#>About Us</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="category.html">Categories</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Farms</a></li>
         </ul>
-        <ul style="float: right;">
-            <li><a href=#>Contact Us</a></li>
-            <li> <a href=#>FAQ </a></li>
-        </ul>
-
+        <div class="nav-actions">
+            <a href="#" class="cart-btn">Cart (0)</a>
+        </div>
     </nav>
-    <section>
-        <img src="vegetables.jpeg" alt="Vegetables">
+
+    <section class="hero">
+        <img src="C:\Users\Bhumika Jain\.gemini\antigravity\brain\a94fc1db-1a48-4460-bb36-a444b611a952\organic_vegetables_banner_1773297568094.png" alt="Fresh Organic Vegetables">
+        <div class="hero-content">
+            <h1>Farm Fresh Goodness Delivered</h1>
+            <p>Directly from local sustainable farms to your kitchen. Pure, organic, and full of life.</p>
+        </div>
     </section>
-    <center>
-        <section>
-            <h1>------------- Vegetables------------- </h1>
-        </section>
-    </center>
 
-    <div class="productcontainer">
-        <div class="productcontaineritem">
-            <center>
-                <div class="productcontaineritemheader"> 11hrs 12min left</div>
-                <img src="tomato.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
-                <b> <h3>Tomato</h3></b>
-                <h5> Rs. 100</h5>
-                <h6>1 Kg</h6>
-                <div class="productcontaineritemheader"> Add to Cart</div>
-            </center>
+    <main>
+        <div class="section-header">
+            <h2>Seasonal Picks</h2>
         </div>
-        <div class="productcontaineritem">
-            <center>
-                <div class="productcontaineritemheader"> 11hrs 12min left</div>
-                <img src="potato.jpg" style="max-width: 100%; height: auto; margin: 6px;">
-                <h3>potato</h3>
-                <h5> Rs. 100</h5>
-                <h6>1 Kg</h6>
-                <div class="productcontaineritemheader"> Add to Cart</div>
-            </center>
-        </div>
-        <div class="productcontaineritem">
-            <center>
-                <div class="productcontaineritemheader"> 11hrs 12min left</div>
-                <img src="onion.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
-                <h3>onion</h3>
-                <h5> Rs. 100</h5>
-                <h6>1 Kg</h6>
-                <div class="productcontaineritemheader"> Add to Cart</div>
-            </center>
-        </div>
-        <div class="productcontaineritem">
-            <center>
-                <div class="productcontaineritemheader"> 11hrs 12min left</div>
-                <img src="capsicum.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
-                <h3>Capsicum</h3>
-                <h5> Rs. 100</h5>
-                <h6>1 Kg</h6>
-                <div class="productcontaineritemheader"> Add to Cart</div>
-            </center>
-        </div>
-        <div class="productcontaineritem">
-            <center>
-                <div class="productcontaineritemheader"> 11hrs 12min left</div>
-                <img src="tomato.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
-                <h3>Tomato</h3>
-                <h5> Rs. 100</h5>
-                <h6>1 Kg</h6>
-                <div class="productcontaineritemheader"> Add to Cart</div>
-            </center>
-        </div>
-        <div class="productcontaineritem">
-            <center>
-                <div class="productcontaineritemheader"> 11hrs 12min left</div>
-                <img src="onion.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
-                <h3>Onion</h3>
-                <h5> Rs. 100</h5>
-                <h6>1 Kg</h6>
-                <div class="productcontaineritemheader"> Add to Cart</div>
-            </center>
-        </div>
-        <div class="productcontaineritem">
-            <center>
-                <div class="productcontaineritemheader"> 11hrs 12min left</div>
-                <img src="tomato.jpeg" style="max-width: 100%; height: auto; margin: 6px;">
-                <h3>Tomato</h3>
-                <h5> Rs. 100</h5>
-                <h6>1 Kg</h6>
-                <div class="productcontaineritemheader"> Add to Cart</div>
-            </center>
-        </div>
-    </div>
 
-    </div>
+        <div class="product-grid">
+            <!-- Tomato -->
+            <div class="product-card">
+                <div class="batch">11hrs left</div>
+                <img src="tomato.jpeg" alt="Roma Tomatoes" class="product-img">
+                <div class="product-info">
+                    <h3>Roma Tomato</h3>
+                    <p>Rich in Vitamin C, farm-ripened</p>
+                    <span class="price-tag">Rs. 100 <small>/ 1 kg</small></span>
+                    <button class="add-btn">Add to Basket</button>
+                </div>
+            </div>
+
+            <!-- Potato -->
+            <div class="product-card">
+                <div class="batch">Fresh Stock</div>
+                <img src="potato.jpg" alt="Golden Potatoes" class="product-img">
+                <div class="product-info">
+                    <h3>Golden Potato</h3>
+                    <p>Perfect for roasting and mashing</p>
+                    <span class="price-tag">Rs. 100 <small>/ 1 kg</small></span>
+                    <button class="add-btn">Add to Basket</button>
+                </div>
+            </div>
+
+            <!-- Onion -->
+            <div class="product-card">
+                <img src="onion.jpeg" alt="Red Onions" class="product-img">
+                <div class="product-info">
+                    <h3>Premium Onion</h3>
+                    <p>Sharp and flavorful harvest</p>
+                    <span class="price-tag">Rs. 100 <small>/ 1 kg</small></span>
+                    <button class="add-btn">Add to Basket</button>
+                </div>
+            </div>
+
+            <!-- Capsicum -->
+            <div class="product-card">
+                <div class="batch">Bestseller</div>
+                <img src="capsicum.jpeg" alt="Sweet Capsicum" class="product-img">
+                <div class="product-info">
+                    <h3>Fresh Capsicum</h3>
+                    <p>Crispy, organic bell peppers</p>
+                    <span class="price-tag">Rs. 100 <small>/ 1 kg</small></span>
+                    <button class="add-btn">Add to Basket</button>
+                </div>
+            </div>
+
+            <!-- Repeat for demo -->
+            <div class="product-card">
+                <img src="tomato.jpeg" alt="Roma Tomatoes" class="product-img">
+                <div class="product-info">
+                    <h3>Cherry Tomato</h3>
+                    <p>Sweet bite-sized organic delights</p>
+                    <span class="price-tag">Rs. 100 <small>/ 1 kg</small></span>
+                    <button class="add-btn">Add to Basket</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="onion.jpeg" alt="Red Onions" class="product-img">
+                <div class="product-info">
+                    <h3>Shallots</h3>
+                    <p>Delicate and mild flavor profile</p>
+                    <span class="price-tag">Rs. 100 <small>/ 1 kg</small></span>
+                    <button class="add-btn">Add to Basket</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="tomato.jpeg" alt="Roma Tomatoes" class="product-img">
+                <div class="product-info">
+                    <h3>Beefsteak Tomato</h3>
+                    <p>Large, fleshy and full of juice</p>
+                    <span class="price-tag">Rs. 100 <small>/ 1 kg</small></span>
+                    <button class="add-btn">Add to Basket</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 40px; background: #fff; margin-top: 40px; border-top: 1px solid #eee;">
+        <p>&copy; 2024 GreenHarvest Organic Farms. All Rights Reserved.</p>
+    </footer>
 </body>
 
-</html>
+</html>

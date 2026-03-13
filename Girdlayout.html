@@ -1,53 +1,218 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Grid Layout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Bento Grid | Creative Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #4f46e5;
+            --accent: #f43f5e;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: #f8fafc;
+            min-height: 100vh;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 600px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #818cf8, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        @keyframes entrance {
+            from { opacity: 0; transform: scale(0.95); filter: blur(10px); }
+            to { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
+
         .container {
             display: grid;
-            /*justify-content: center;*/
-            align-content: space-around;
-            min-height: 800px;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            grid-auto-rows: min-content;
-            background-color: aqua;
+            max-width: 1200px;
+            width: 100%;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 20px;
+            animation: entrance 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
-        
+
         .item {
-            background-color: green;
-            margin: 2px;
-            height: 60px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
         }
-        /*.item1 {
-            grid-column: 1/span 3;
-            background-color: blueviolet;
-            height: 60px;
-        }*/
-        
-        .item2 {
-            grid-row: 1/span 3;
-            background-color: red;
+
+        .item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(244, 63, 94, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .item:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .item:hover::before {
+            opacity: 1;
+        }
+
+        .item h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            z-index: 1;
+        }
+
+        .item p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            z-index: 1;
+        }
+
+        /* Bento Grid Layout Logic */
+        .large {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: linear-gradient(45deg, rgba(79, 70, 229, 0.2), var(--card-bg));
+        }
+
+        .tall {
+            grid-row: span 2;
+        }
+
+        .wide {
+            grid-column: span 2;
+        }
+
+        .item.featured {
+            border: 1px solid rgba(79, 70, 229, 0.5);
+        }
+
+        .featured h3 {
+            color: #818cf8;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            header h1 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 250px;
+            }
+            .large, .tall, .wide {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
         }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>Creative Grid</h1>
+        <p>A demonstration of modern Bento Grid layouts using CSS Grid Level 2. Responsive, elegant, and focused.</p>
+    </header>
+
     <div class="container">
-        <div class="item2">Item 1</div>
-        <div class="item">Item 2</div>
-        <div class="item">Item 3</div>
-        <div class="item">Item 4</div>
-        <div class="item">Item 5</div>
-        <div class="item">Item 6</div>
-        <div class="item">Item 7</div>
-        <div class="item">Item 8</div>
-        <div class="item">Item 9</div>
-        <div class="item">Item 10</div>
-        <div class="item">Item 11</div>
-        <div class="item">Item 12</div>
-        <div class="item">Item 13</div>
+        <div class="item large featured">
+            <h3>Featured Project</h3>
+            <p>A deep dive into grid-template-areas.</p>
+        </div>
+        <div class="item tall">
+            <h3>Design System</h3>
+            <p>Consistency is key.</p>
+        </div>
+        <div class="item">
+            <h3>Analytics</h3>
+            <p>Smart data views.</p>
+        </div>
+        <div class="item">
+            <h3>Settings</h3>
+            <p>Fine-tune everything.</p>
+        </div>
+        <div class="item wide">
+            <h3>Platform Integration</h3>
+            <p>Works everywhere you do.</p>
+        </div>
+        <div class="item">
+            <h3>Profile</h3>
+            <p>Your unique space.</p>
+        </div>
+        <div class="item tall featured">
+            <h3>Components</h3>
+            <p>Modular building blocks.</p>
+        </div>
+        <div class="item">
+            <h3>Help</h3>
+            <p>We're here for you.</p>
+        </div>
+        <div class="item wide">
+            <h3>New Feature</h3>
+            <p>Coming Summer 2024.</p>
+        </div>
     </div>
 </body>
 
-</html>
+</html>

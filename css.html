@@ -1,43 +1,143 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="c1.css" rel="stylesheet">
+    <title>CSS Lab | Style Mastery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        h1 {
-            color: darkblue;
-            font-size: 30px;
+        :root {
+            --primary: #6366f1;
+            --primary-bg: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --code-bg: #1e293b;
+            --text-main: #1e293b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-        
-        .p1 {
-            color: aqua;
-            font-size: 20px;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
         }
-        
-        #p2 {
-            color: aliceblue;
-            font-size: 15px;
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        .hero { text-align: center; margin-bottom: 50px; }
+        .hero h1 { font-size: 3rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .hero p { color: #64748b; font-size: 1.1rem; }
+
+        .demo-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 40px;
+        }
+
+        h2 { margin: 30px 0 15px; font-weight: 800; color: #334155; }
+
+        .lab-element {
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .lab-element:hover {
+            transform: scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Specific Lab Styles */
+        .aqua-text { color: #06b6d4; font-weight: 700; font-size: 1.25rem; }
+        .ghost-text { color: #94a3b8; font-size: 0.9rem; font-style: italic; }
+        .violet-text { color: #8b5cf6; font-weight: 600; }
+
+        .code-block {
+            background: var(--code-bg);
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+
+        .img-container {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+
+        img { width: 100%; height: auto; display: block; }
     </style>
-    <title>CSS Stylesheet</title>
 </head>
 
 <body>
-    <h1>My First CSS Stylesheet</h1>
-    <p>This is a paragraph styled using CSS.</p>
-    <h2>My Second Heading</h2>
-    <p>
-        This is another paragraph styled using CSS.</p>
-    <div class="c1.css">
-        <p id="p1">This is a paragraph inside a div styled using CSS.</p>
-        <p>para 1 inside div</p>
-        <p style="color: darkviolet;">para 2 inside div</p>
-        <p style="color: darkviolet;">para 3 inside div</p>
-        <p id="p1">para 3 inside div</p>
+    <div class="container">
+        <div class="hero">
+            <h1>The CSS Lab</h1>
+            <p>Experimenting with Cascading Style hierarchies</p>
+        </div>
+
+        <div class="demo-card">
+            <h2>Headline Styling</h2>
+            <div class="lab-element">
+                <p>This is a standard paragraph showing basic line-height and spacing alignment.</p>
+            </div>
+
+            <h2>Secondary Lab</h2>
+            <div class="lab-element">
+                <p class="aqua-text">Dynamic Aqua Transformation</p>
+                <div class="code-block">
+                    .aqua-text { color: #06b6d4; font-size: 1.25rem; }
+                </div>
+            </div>
+
+            <div class="lab-element">
+                <p class="ghost-text">AliceBlue Subtle Layer</p>
+                <div class="code-block">
+                    #ghost-view { color: #f0f8ff; font-size: 0.9rem; }
+                </div>
+            </div>
+
+            <div class="img-container">
+                <img src="img/Balaghat-Jobs.png" alt="Balaghat Tech Hub" />
+            </div>
+
+            <div class="lab-element">
+                <p style="color: #c026d3; font-weight: 800;">Inline Violet Override</p>
+                <p class="violet-text">Class-based Soft Violet</p>
+            </div>
+        </div>
     </div>
-    <img src="img/a2.png" alt="Image" style="width: 100%; max-width: 500px; height: auto; display: block; margin: 20px auto;">
-    <p>This is a paragraph styled using CSS.</p>
 </body>
 
-</html>
+</html>

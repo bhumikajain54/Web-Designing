@@ -1,53 +1,212 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Position | Abstract Layers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;800&display=swap" rel="stylesheet">
     <style>
-        body {
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --neon-pink: #ff00de;
+            --bg-dark: #050505;
+        }
+
+        * {
             margin: 0;
-            padding: 20px;
-            overflow-x: hidden;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        .block1, .block2, .block3 {
-            width: clamp(100px, 30vw, 200px);
-            height: clamp(100px, 30vw, 200px);
+
+        body {
+            background-color: var(--bg-dark);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Outfit', sans-serif;
+            position: relative;
         }
-        
+
+        .art-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info h1 {
+            color: white;
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .info p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            border-left: 2px solid var(--neon-blue);
+            padding-left: 15px;
+        }
+
+        /* Animations */
+        @keyframes drift-1 {
+            0%, 100% { transform: rotate(-15deg) translate(0, 0); }
+            50% { transform: rotate(-12deg) translate(10px, -15px); }
+        }
+
+        @keyframes drift-2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-15px, 10px); }
+        }
+
+        @keyframes drift-3 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(15px, 20px); }
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); filter: blur(10px); }
+            to { opacity: 1; transform: translateX(0); filter: blur(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(188, 19, 254, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            animation: bgPulse 8s infinite ease-in-out;
+        }
+
+        .info {
+            position: absolute;
+            left: 80px;
+            top: 80px;
+            z-index: 100;
+            max-width: 250px;
+            pointer-events: none;
+            animation: slideIn 1s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+
+        .block {
+            position: absolute;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
         .block1 {
-            background-color: Blueviolet;
-            position: relative;
-            top: 20px;
-            left: 20px;
-            border: 4px blue solid;
-            z-index: 6;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(188, 19, 254, 0.2), rgba(0, 242, 255, 0.1));
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--neon-purple);
+            box-shadow: 0 0 50px rgba(188, 19, 254, 0.3);
+            border-radius: 40px;
+            z-index: 2;
+            transform: rotate(-15deg);
+            animation-name: drift-1;
+            animation-delay: 0.2s;
         }
-        
+
         .block2 {
-            background-color: aqua;
-            position: relative;
-            top: -50px;
-            left: 60px;
-            border: 4px violet solid;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 0, 222, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 40px rgba(255, 0, 222, 0.3);
             border-radius: 50%;
-            z-index: 4;
+            top: -40px;
+            right: -20px;
+            z-index: 3;
+            animation-name: drift-2;
+            animation-duration: 5s;
         }
-        
+
         .block3 {
-            background-color: lightpink;
-            position: relative;
-            top: -120px;
-            left: 100px;
-            border: 4px darkred solid;
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 242, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.3);
             border-radius: 50%;
-            z-index: 8;
+            bottom: -30px;
+            left: -50px;
+            z-index: 1;
+            animation-name: drift-3;
+            animation-duration: 7s;
+        }
+
+        .block:hover {
+            transform: scale(1.1) translate(10px, -10px) !important;
+            filter: brightness(1.5);
+            z-index: 10;
+            animation-play-state: paused;
+        }
+
+        .glow-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+            animation: float 4s infinite ease-in-out, popIn 1s ease-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); opacity: 0.3; }
+            50% { transform: translateY(-20px); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .art-container { transform: scale(0.7); }
+            .info { left: 0; top: 40px; max-width: 100%; text-align: center; }
+            .info p { border-left: none; border-top: 2px solid var(--neon-blue); padding: 15px 0 0 0; }
         }
     </style>
 </head>
 
 <body>
-    <div class="block1"></div>
-    <div class="block2"></div>
-    <div class="block3"></div>
+    <div class="info">
+        <h1>Layered<br>Logic</h1>
+        <p>A demonstration of relative positioning and z-index depth in a dark-themed digital art context.</p>
+    </div>
+
+    <div class="art-container">
+        <div class="block block1"></div>
+        <div class="block block2"></div>
+        <div class="block block3"></div>
+        
+        <!-- Decoration Dots -->
+        <div class="glow-dot" style="top: 10%; left: 20%;"></div>
+        <div class="glow-dot" style="top: 80%; left: 70%; animation-delay: 1s;"></div>
+        <div class="glow-dot" style="top: 40%; left: 90%; animation-delay: 2s;"></div>
+    </div>
 </body>
 
-</html>
+</html>
